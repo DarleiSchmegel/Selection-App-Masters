@@ -6,7 +6,7 @@ interface ThemeProps {
 }
 const GameSearchStyles = styled.div`
   display: flex;
-  list-style: none;
+
   flex-direction: column;
   
   justify-content: center;
@@ -86,23 +86,24 @@ const GameSearchStyles = styled.div`
     padding-left: 1ch;
   }
 
-  form select {
-  width: 400px;
-  height: 35px;
-  background: #e1e1e1;
-  color: #1e1e1e;
+  select.select-search {
+    width: 400px;
+    height: 35px;
+    background: #e1e1e1;
+    color: #1e1e1e;
 
-  width: 100%;
+    width: 100%;
 
-  /* espaçamentos*/
-  margin-bottom: 4px;
+    /* espaçamentos*/
+    margin-bottom: 4px;
 
-  padding: 2px 16px;
+    padding: 2px 16px;
 
-  /* bordas */
-  border-radius: 4px;
-  border: 1px #ffffff88 solid;
-}
+    /* bordas */
+    border-radius: 4px;
+    border: 1px #ffffff88 solid;
+  }
+
 
   //End forms
 

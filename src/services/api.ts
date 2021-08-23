@@ -1,16 +1,11 @@
-// import axios from 'axios';
-
-// const api = axios.create({
-//   baseURL: "http://localhost:3333"
-// });
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 // ... 
 
         const config: AxiosRequestConfig = {
-            baseURL: process.env.NEXT_PUBLIC_HOST,
+            baseURL: process.env.NEXT_PUBLIC_URL,
             headers: {
-              'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
+              'x-rapidapi-host': process.env.NEXT_PUBLIC_HOST,
               'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY
             }
         }; 

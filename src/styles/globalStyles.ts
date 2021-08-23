@@ -6,6 +6,7 @@ interface ThemeProps {
   backgroundColorSecundary?: string;
 }
 const GlobalStyle = createGlobalStyle<ThemeProps>`
+
   *{
     margin: 0;
     padding: 0;
