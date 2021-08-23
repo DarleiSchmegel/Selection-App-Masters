@@ -12,8 +12,8 @@ const GameSearchStyles = styled.div`
   justify-content: center;
   align-items: center;
   
-  padding: 50px 0;
-  margin-bottom: 30px; 
+  padding: 50px 0 0;
+  margin-bottom: 10px; 
 
   //Formes
   form{
@@ -103,10 +103,7 @@ const GameSearchStyles = styled.div`
     border-radius: 4px;
     border: 1px #ffffff88 solid;
   }
-
-
   //End forms
-
 
   .status ul {
     display: flex;
@@ -116,7 +113,6 @@ const GameSearchStyles = styled.div`
     gap: 1ch;
     list-style-type: none;
   }
-
 
   .status li {
     color: #1e1e1e;
@@ -133,8 +129,6 @@ const GameSearchStyles = styled.div`
 
   .status li.selected {
     opacity: 1;
-    padding: 8px;
-    border-radius: 2px;
     background: lightgreen;//rgba(255,255,255,0.5);
     
   }
@@ -154,6 +148,17 @@ const GameSearchStyles = styled.div`
     gap: 20px;
   }
 
+  @media (max-width: 600px){
+    
+    form {
+      width:auto;
+      padding: 0 30px;
+      margin-bottom: 30px;
+    }
+    .status li {
+      padding: 8px 10px;
+    } 
+  }
 
 `;
 

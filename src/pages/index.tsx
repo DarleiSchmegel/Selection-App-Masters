@@ -1,14 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
-
-import { api } from "../services/api"
 
 import Header from "../components/Header";
 
-import Pagination from "../components/Pagination"
-import Cards from "../components/Cards"
+import Footer from "../components/Footer"
 import GameSearch from "../components/GameSearch"
 interface Item {
   developer: string,
@@ -42,6 +37,7 @@ const Home: NextPage = () => {
 
 
       </main>
+        <Footer/>
   </>
   )
 }

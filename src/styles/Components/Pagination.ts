@@ -26,12 +26,21 @@ const PaginationStyles = styled.ul`
     font-weight: bold;
     border: none;
   }
+  
   .pagination__item--active:hover {
     cursor: not-allowed;
     background: none;
   }
+
   .pagination__item--active:focus {
     outline: none;
+  }
+
+  @media (max-width: 400px){
+    li button {
+      padding: 3px;
+      font-size: 10px;
+    }
   }
 `;
 

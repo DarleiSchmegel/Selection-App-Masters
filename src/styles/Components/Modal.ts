@@ -1,43 +1,40 @@
 import styled from "styled-components";
-import img from "../../../public/moldura_estrela.png"
+
 const ModalStyles = styled.div`
   cursor: auto;
-  /* .modal-overlay{ */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 4;
-    background-color: rgba(0, 0, 0, 0.8);
-    
-    /* overflow: hidden; */
-  /* } */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.8);
  
-    color: #1e1e1e;
-    .container {
-      position: absolute;
-      display: flex;
-      
-      
-      padding: 10px;
+  color: #1e1e1e;
+  .container {
+    position: absolute;
+    display: flex;
+    
+    
+    padding: 10px;
 
-    }
-    .container .left {
-      width: 50%;
-      height: 90%;
-      padding: 20px;
-      
-    }
-    .container .right {
-      width: 50%;
-      height: 90%;
-     padding: 20px;
-    }
+  }
+  .container .left {
+    width: 50%;
+    height: 90%;
+    padding: 20px;
+    
+  }
+  .container .right {
+    width: 50%;
+    height: 90%;
+    padding: 20px;
+  }
 
   .modal{
     overflow: auto;
@@ -67,12 +64,12 @@ const ModalStyles = styled.div`
     right: 15px;
   }
 
-
  .close-modal svg {
     width: 38px;
     height: 38px;
   }
-   .modal-content {
+
+  .modal-content {
     border: 0;
 
     transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
@@ -81,13 +78,9 @@ const ModalStyles = styled.div`
 
   .content {
     margin: 10px;
-    
   }
 
-
-
   .info {
-
     /* flex-direction: column; */
     /* align-items: center; */
     display: flex;
@@ -143,8 +136,8 @@ const ModalStyles = styled.div`
 
   .right .status li.selected {
     opacity: 1;
-    padding: 8px;
-    border-radius: 2px;
+    /* padding: 8px;
+    border-radius: 2px; */
     background: lightgreen;//rgba(255,255,255,0.5);
     
   }
@@ -164,6 +157,47 @@ const ModalStyles = styled.div`
     height: 50px;
     border-radius: 8px;
     gap: 20px;
+  }
+
+  @media (max-width: 400px){
+
+    .modal {  
+      display: flex;
+      width: 95%;
+      height: 95%;
+      margin: 0;
+      padding: 0;    
+    }
+
+    .container { 
+      flex-direction: column-reverse;
+      padding: 0;
+      margin:0;
+      margin-top: 20px;
+    }
+
+    .right .status ul {
+      flex-direction: column;
+    }
+
+    .right .status li{
+      width: 70%;
+    }
+
+    .right .rating ul {
+      gap: 5px;   
+    }
+
+    .container .left {
+      width: 100%;
+      padding: 0;
+    }
+    
+    .container .right {
+      width: auto;
+      padding: 0;
+      margin: 8px;
+    }
   }
 `;
 

@@ -45,17 +45,17 @@ const Modal = ({id,closeModal, isOpen}:PropTypes) => {
 
     
     if(rating || status){
+      var index = retrievedMyGame.findIndex((element:any)=>{
+        return element.id === id
+      })
       let aux = {
         id: id,
         rating: rating,
         status: status
       }
-      
-      var index = retrievedMyGame.findIndex((element:any)=>{
-        return element.id === id
-      })
+      console.log("index",index)
       if(index !== -1){
-        if(rating !== null )
+        if(rating !== 0 )
           retrievedMyGame[index].rating = rating
         if(status !== null)
           retrievedMyGame[index].status = status
@@ -89,9 +89,6 @@ const Modal = ({id,closeModal, isOpen}:PropTypes) => {
   return (
 
     <ModalStyles>
-      {/* <div className={`modal-overlay ${isOpen ? 'active'  : ''}`}>
-      <div className={`modal ${isOpen ? 'active'  : ''}`}> */}
-      {/* <div className="modal-overlay"> */}
         <a className="close-modal" onClick={closeModal}>
           <svg viewBox="0 0 20 20">
             <path
@@ -131,74 +128,70 @@ const Modal = ({id,closeModal, isOpen}:PropTypes) => {
             </div>
 
             <div className="rating">
-             <h1>Rating:</h1>
-            <ul>
-            <li onClick={()=>updateLocalStorage(item?.id || 0,1,null)}>
-                  {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 1 ? (
+              <h1>Rating:</h1>
+              <ul>
+              <li onClick={()=>updateLocalStorage(item?.id || 0,1,null)}>
+                    {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 1 ? (
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ))}
-              </li>
-              <li onClick={()=>updateLocalStorage(item?.id || 0,2,null)}>
-                  {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 2 ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ))}
+                </li>
+                <li onClick={()=>updateLocalStorage(item?.id || 0,2,null)}>
+                    {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 2 ? (
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ))}
-              </li>
-              <li onClick={()=>updateLocalStorage(item?.id || 0,3,null)}>
-                  {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 3 ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ))}
+                </li>
+                <li onClick={()=>updateLocalStorage(item?.id || 0,3,null)}>
+                    {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 3 ? (
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ))}
-              </li>
-              <li onClick={()=>updateLocalStorage(item?.id || 0,4,null)}>
-                  {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 4 ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ))}
+                </li>
+                <li onClick={()=>updateLocalStorage(item?.id || 0,4,null)}>
+                    {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 4 ? (
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ))}
-              </li>
-              <li onClick={()=>updateLocalStorage(item?.id || 0,5,null)}>
-                  {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 5 ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ))}
+                </li>
+                <li onClick={()=>updateLocalStorage(item?.id || 0,5,null)}>
+                    {(typeof gameSelected?.rating != "undefined") && (gameSelected?.rating >= 5 ? (
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                  ))}
-              </li>              
-            </ul>
-
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "#DAA520"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path style={{fill: "rgba(0, 0, 0, 1)"}} d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                      </svg>
+                    ))}
+                </li>              
+              </ul>
             </div>
-
-
-            {/* <button onClick={()=>updateLocalStorage(item?.id || 0)}>ADD</button> */}
             <p className="text--medium">*Select a status to rate the game.</p>
           </div>
         </div>

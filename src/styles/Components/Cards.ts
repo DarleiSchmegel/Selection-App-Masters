@@ -9,6 +9,7 @@ const CardsStyles = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 
+  
   padding-bottom: 20px;
 
   .image {
@@ -46,7 +47,12 @@ const CardsStyles = styled.div`
     /* transform: scale(1.03); */
   }
 
-  
+  @media (max-width: 600px){   
+    grid-template-columns: 1fr;
+    .card {
+      margin: 0 10px;
+    }
+  }
 
 `;
 
