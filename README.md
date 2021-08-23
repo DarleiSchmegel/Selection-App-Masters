@@ -1,6 +1,6 @@
 
 ## GAME SEARCH
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) para a seleção de estágiario na empresa [APP-MASTERS](https://appmasters.io/en/).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) for the selection of an intern at the  [APP-MASTERS](https://appmasters.io/en/) company.
 
 The project is hosted on the [Netlify](https://www.netlify.com/) hosting system and the link to see the project working is [https://app-master-darlei-schmegel.netlify.app/](https://app-master-darlei-schmegel.netlify.app/).
 
